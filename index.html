@@ -147,8 +147,8 @@
 
     .hero-sub {
       font-size: 13px;
-      color: var(--gray-500);
-      font-weight: 400;
+      color: var(--accent);
+      font-weight: 500;
       line-height: 1.6;
       max-width: 420px;
     }
@@ -290,39 +290,8 @@
       gap: 12px;
     }
 
-    .status-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: .3px;
-      text-transform: uppercase;
-    }
-
-    .status-badge::before {
-      content: '';
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-
-    .status-live {
-      color: var(--green);
-    }
-
-    .status-live::before {
-      background: var(--green);
-      box-shadow: 0 0 0 3px rgba(26,122,69,.15);
-    }
-
     .status-soon {
       color: var(--gray-500);
-    }
-
-    .status-soon::before {
-      background: var(--silver-mid);
     }
 
     /* ─── BUTTONS ────────────────────────────────────────────────────────────── */
@@ -384,6 +353,188 @@
       .hero-title { font-size: 22px; }
       .app-grid { grid-template-columns: 1fr; }
     }
+
+    /* ─── TOP ROW ────────────────────────────────────────────────────────────── */
+    .top-row {
+      display: grid;
+      grid-template-columns: 190px 1fr 190px;
+      gap: 20px;
+      margin-bottom: 28px;
+      align-items: stretch;
+    }
+
+    /* ─── WEATHER CARD ───────────────────────────────────────────────────────── */
+    .weather-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-card);
+      border: 1px solid rgba(200,169,74,.18);
+      padding: 28px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      aspect-ratio: 1 / 1;
+    }
+    .weather-eyebrow {
+      font-size: 9px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--silver);
+      margin-bottom: 10px;
+    }
+    .weather-icon { font-size: 36px; line-height: 1; margin-bottom: 8px; }
+    .weather-temp { font-size: 34px; font-weight: 800; color: var(--navy); line-height: 1; margin-bottom: 4px; }
+    .weather-condition { font-size: 12px; font-weight: 600; color: var(--navy-mid); margin-bottom: 6px; }
+    .weather-detail { font-size: 11px; color: var(--gray-500); }
+    .weather-loading { color: var(--gray-500); font-size: 12px; }
+
+    /* ─── CALENDAR CARD ─────────────────────────────────────────────────────── */
+    .cal-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-card);
+      border: 1px solid rgba(200,169,74,.18);
+      padding: 28px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      aspect-ratio: 1 / 1;
+    }
+    .cal-eyebrow {
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+    .cal-day  { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--gray-500); margin-bottom: 4px; }
+    .cal-num  { font-size: 52px; font-weight: 800; color: var(--navy); line-height: 1; margin-bottom: 2px; }
+    .cal-mon  { font-size: 12px; font-weight: 600; color: var(--navy-mid); }
+
+    /* ─── HERO CARD ──────────────────────────────────────────────────────────── */
+    .hero-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-card);
+      border: 1px solid rgba(220,228,240,.6);
+      padding: 32px 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .hero-greeting {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: -.3px;
+      margin-bottom: 10px;
+    }
+    .hero-greeting .greeting-name { color: var(--accent); }
+
+    /* ─── SECTION HEADER ─────────────────────────────────────────────────────── */
+    .section-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .section-header .section-title {
+      margin-bottom: 0;
+      flex: 1;
+    }
+    .edit-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+      margin-left: 16px;
+    }
+    .edit-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--gray-500);
+      letter-spacing: .3px;
+      user-select: none;
+    }
+    .toggle-switch {
+      position: relative;
+      display: inline-block;
+      width: 36px;
+      height: 20px;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .toggle-switch input { opacity: 0; width: 0; height: 0; position: absolute; }
+    .toggle-slider {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--silver-light);
+      border-radius: 20px;
+      transition: background .25s;
+    }
+    .toggle-slider:before {
+      content: '';
+      position: absolute;
+      height: 14px; width: 14px;
+      left: 3px; bottom: 3px;
+      background: white;
+      border-radius: 50%;
+      box-shadow: 0 1px 3px rgba(0,0,0,.2);
+      transition: transform .25s;
+    }
+    .toggle-switch input:checked + .toggle-slider { background: var(--accent); }
+    .toggle-switch input:checked + .toggle-slider:before { transform: translateX(16px); }
+
+    /* ─── EDIT MODE ──────────────────────────────────────────────────────────── */
+    .app-card { position: relative; }
+    .drag-handle {
+      display: none;
+      position: absolute;
+      top: 12px; right: 12px;
+      width: 22px; height: 22px;
+      align-items: center;
+      justify-content: center;
+      color: var(--silver);
+      cursor: grab;
+    }
+    .drag-handle:active { cursor: grabbing; }
+    .app-grid.editing .app-card {
+      border: 1.5px dashed rgba(200,169,74,.5);
+      cursor: default;
+    }
+    .app-grid.editing .drag-handle { display: flex; }
+    .sortable-ghost { opacity: .35; }
+
+    /* ─── STATUS BADGE ───────────────────────────────────────────────────────── */
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 20px;
+      background: var(--gray-100);
+      color: var(--gray-500);
+      transition: background .5s, color .5s;
+    }
+    .status-dot-circle {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--silver);
+      flex-shrink: 0;
+      transition: background .5s;
+    }
+    .status-badge.status-live { background: #f0fdf4; color: #15803d; }
+    .status-badge.status-live .status-dot-circle { background: #22c55e; }
+    .status-badge.status-down { background: #fef2f2; color: #dc2626; }
+    .status-badge.status-down .status-dot-circle { background: #ef4444; }
   </style>
 </head>
 <body>
@@ -399,27 +550,45 @@
   <!-- ── PAGE ─────────────────────────────────────────────────────────────────── -->
   <div class="page-wrap">
 
-    <!-- Hero -->
-    <div class="hero">
-      <div class="hero-left">
-        <div class="hero-eyebrow">MICO Cooling Corp</div>
-        <h1 class="hero-title">Internal Tools Dashboard</h1>
-        <p class="hero-sub">All your MICO Cooling Corp applications in one place. Select a tool below to get started.</p>
+    <!-- Top row: weather | hero | calendar -->
+    <div class="top-row">
+      <div class="weather-card" id="weather-card">
+        <div class="weather-loading">Loading weather…</div>
       </div>
-      <div class="hero-date-card">
-        <div class="hero-date-day" id="heroDayName"></div>
-        <div class="hero-date-num" id="heroDayNum"></div>
-        <div class="hero-date-month" id="heroMonthYear"></div>
+      <div class="hero-card">
+        <div class="hero-left">
+          <div class="hero-greeting" id="hero-greeting"></div>
+          <h1 class="hero-title">Internal Tools Dashboard</h1>
+          <p class="hero-sub">All your MICO Cooling Corp applications in one place. Select a tool below to get started.</p>
+        </div>
+      </div>
+      <div class="cal-card">
+        <div class="cal-eyebrow">Today</div>
+        <div class="cal-day" id="heroDayName"></div>
+        <div class="cal-num" id="heroDayNum"></div>
+        <div class="cal-mon" id="heroMonthYear"></div>
       </div>
     </div>
 
     <!-- Apps -->
-    <div class="section-title">Applications</div>
+    <div class="section-header">
+      <div class="section-title">Applications</div>
+      <div class="edit-controls">
+        <span class="edit-label">Edit Layout</span>
+        <label class="toggle-switch">
+          <input type="checkbox" id="edit-mode-toggle">
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+    </div>
 
-    <div class="app-grid">
+    <div class="app-grid" id="app-grid">
 
       <!-- Service Quotes -->
-      <div class="app-card">
+      <div class="app-card" data-id="quotes">
+        <div class="drag-handle" title="Drag to reorder">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="4" cy="3" r="1.2" fill="currentColor"/><circle cx="10" cy="3" r="1.2" fill="currentColor"/><circle cx="4" cy="7" r="1.2" fill="currentColor"/><circle cx="10" cy="7" r="1.2" fill="currentColor"/><circle cx="4" cy="11" r="1.2" fill="currentColor"/><circle cx="10" cy="11" r="1.2" fill="currentColor"/></svg>
+        </div>
         <div class="card-icon-wrap">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
             <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
@@ -428,7 +597,7 @@
         <div class="card-name">Service Quotes</div>
         <div class="card-desc">Create and manage service quotes for MICO Cooling systems and equipment.</div>
         <div class="card-footer">
-          <span class="status-badge status-live">Live</span>
+          <span class="status-badge" id="status-quotes"><span class="status-dot-circle"></span><span class="status-text">Checking…</span></span>
           <a class="btn btn-gold" href="https://quotes.micocc.net" target="_blank">
             Open App
             <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
@@ -437,7 +606,10 @@
       </div>
 
       <!-- Install Quotes -->
-      <div class="app-card">
+      <div class="app-card" data-id="install">
+        <div class="drag-handle" title="Drag to reorder">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="4" cy="3" r="1.2" fill="currentColor"/><circle cx="10" cy="3" r="1.2" fill="currentColor"/><circle cx="4" cy="7" r="1.2" fill="currentColor"/><circle cx="10" cy="7" r="1.2" fill="currentColor"/><circle cx="4" cy="11" r="1.2" fill="currentColor"/><circle cx="10" cy="11" r="1.2" fill="currentColor"/></svg>
+        </div>
         <div class="card-icon-wrap">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
             <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
@@ -446,7 +618,7 @@
         <div class="card-name">Install Quotes</div>
         <div class="card-desc">Build and send installation quotes with full pricing and scope of work.</div>
         <div class="card-footer">
-          <span class="status-badge status-live">Live</span>
+          <span class="status-badge" id="status-install"><span class="status-dot-circle"></span><span class="status-text">Checking…</span></span>
           <a class="btn btn-gold" href="https://install.micocc.net" target="_blank">
             Open App
             <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
@@ -455,7 +627,10 @@
       </div>
 
       <!-- PM Calculator -->
-      <div class="app-card">
+      <div class="app-card" data-id="pmcalc">
+        <div class="drag-handle" title="Drag to reorder">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="4" cy="3" r="1.2" fill="currentColor"/><circle cx="10" cy="3" r="1.2" fill="currentColor"/><circle cx="4" cy="7" r="1.2" fill="currentColor"/><circle cx="10" cy="7" r="1.2" fill="currentColor"/><circle cx="4" cy="11" r="1.2" fill="currentColor"/><circle cx="10" cy="11" r="1.2" fill="currentColor"/></svg>
+        </div>
         <div class="card-icon-wrap">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
             <rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="16" y1="14" x2="16" y2="18"/><line x1="8" y1="14" x2="8" y2="14"/><line x1="12" y1="14" x2="12" y2="14"/><line x1="8" y1="17" x2="8" y2="17"/><line x1="12" y1="17" x2="12" y2="17"/><line x1="8" y1="11" x2="16" y2="11"/>
@@ -464,7 +639,7 @@
         <div class="card-name">PM Calculator</div>
         <div class="card-desc">Calculate and build preventive maintenance agreements and pricing schedules.</div>
         <div class="card-footer">
-          <span class="status-badge status-live">Live</span>
+          <span class="status-badge" id="status-pmcalc"><span class="status-dot-circle"></span><span class="status-text">Checking…</span></span>
           <a class="btn btn-gold" href="https://pmcalc.micocc.net" target="_blank">
             Open App
             <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
@@ -473,7 +648,10 @@
       </div>
 
       <!-- XML Checker -->
-      <div class="app-card">
+      <div class="app-card" data-id="xml">
+        <div class="drag-handle" title="Drag to reorder">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="4" cy="3" r="1.2" fill="currentColor"/><circle cx="10" cy="3" r="1.2" fill="currentColor"/><circle cx="4" cy="7" r="1.2" fill="currentColor"/><circle cx="10" cy="7" r="1.2" fill="currentColor"/><circle cx="4" cy="11" r="1.2" fill="currentColor"/><circle cx="10" cy="11" r="1.2" fill="currentColor"/></svg>
+        </div>
         <div class="card-icon-wrap">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
@@ -482,7 +660,7 @@
         <div class="card-name">XML Checker</div>
         <div class="card-desc">Validate and compare XML data files to verify structure and correctness.</div>
         <div class="card-footer">
-          <span class="status-badge status-live">Live</span>
+          <span class="status-badge" id="status-xml"><span class="status-dot-circle"></span><span class="status-text">Checking…</span></span>
           <a class="btn btn-gold" href="https://xml.micocc.net" target="_blank">
             Open App
             <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
@@ -500,7 +678,7 @@
         <div class="card-name">Payroll Report Generator</div>
         <div class="card-desc">Create and modify internal payroll reports.</div>
         <div class="card-footer">
-          <span class="status-badge status-live">Live</span>
+          <span class="status-badge" id="status-payroll"><span class="status-dot-circle"></span><span class="status-text">Checking…</span></span>
           <a class="btn btn-gold" href="https://payroll.micocc.net" target="_blank">
             Open App
             <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
@@ -514,13 +692,139 @@
 
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.4"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
   <script>
+    // ── Date & Greeting ──────────────────────────────────────────────────────
     const _d = new Date();
     const _days   = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
     const _months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-    document.getElementById('heroDayName').textContent  = _days[_d.getDay()];
-    document.getElementById('heroDayNum').textContent   = _d.getDate();
+    document.getElementById('heroDayName').textContent   = _days[_d.getDay()];
+    document.getElementById('heroDayNum').textContent    = _d.getDate();
     document.getElementById('heroMonthYear').textContent = _months[_d.getMonth()] + ' ' + _d.getFullYear();
+
+    const _hr = _d.getHours();
+    const _greetWord = _hr < 12 ? 'Good morning' : _hr < 17 ? 'Good afternoon' : 'Good evening';
+
+    (async function loadGreeting() {
+      let firstName = null;
+      try {
+        const _authClient = window.supabase.createClient(
+          'https://kbqkwlhmkvwnutqkcstx.supabase.co',
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImticWt3bGhta3Z3bnV0cWtjc3R4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYxMDY0ODUsImV4cCI6MjA5MTY4MjQ4NX0.Fxhi8kP391JBOMNuQvRpT7p4ssf-z5oxv-ooslrsEj4',
+          { auth: { storageKey: 'mico-auth', persistSession: false } }
+        );
+        const { data: { session } } = await _authClient.auth.getSession();
+        if (session?.user?.email) {
+          const raw = session.user.email.split('@')[0].split('.')[0];
+          firstName = raw.charAt(0).toUpperCase() + raw.slice(1);
+        }
+      } catch(e) { /* silent — no session or network issue */ }
+
+      const el = document.getElementById('hero-greeting');
+      if (firstName) {
+        el.innerHTML = _greetWord + ', <span class="greeting-name">' + firstName + '</span>';
+      } else {
+        el.textContent = _greetWord;
+      }
+    })();
+
+    // ── Weather ──────────────────────────────────────────────────────────────
+    function weatherDesc(code) {
+      if (code === 0)                           return ['☀️', 'Clear Sky'];
+      if (code === 1)                           return ['🌤️', 'Mostly Clear'];
+      if (code === 2)                           return ['⛅', 'Partly Cloudy'];
+      if (code === 3)                           return ['☁️', 'Overcast'];
+      if ([45,48].includes(code))               return ['🌫️', 'Foggy'];
+      if ([51,53,55,56,57].includes(code))      return ['🌦️', 'Drizzle'];
+      if ([61,63,65,66,67].includes(code))      return ['🌧️', 'Rain'];
+      if ([71,73,75,77].includes(code))         return ['❄️', 'Snow'];
+      if ([80,81,82].includes(code))            return ['🌦️', 'Showers'];
+      if ([85,86].includes(code))               return ['🌨️', 'Snow Showers'];
+      if (code === 95)                          return ['⛈️', 'Thunderstorm'];
+      if ([96,99].includes(code))               return ['⛈️', 'Severe Storm'];
+      return ['🌡️', 'Unknown'];
+    }
+
+    (async function loadWeather() {
+      const card = document.getElementById('weather-card');
+      try {
+        const res  = await fetch('https://api.open-meteo.com/v1/forecast?latitude=41.0476&longitude=-73.9629&current=temperature_2m,weathercode,windspeed_10m&temperature_unit=fahrenheit&wind_speed_unit=mph');
+        const data = await res.json();
+        const { temperature_2m: temp, weathercode: code, windspeed_10m: wind } = data.current;
+        const [emoji, label] = weatherDesc(code);
+        card.innerHTML =
+          `<div class="weather-eyebrow">ORANGEBURG, NY</div>` +
+          `<div class="weather-icon">${emoji}</div>` +
+          `<div class="weather-temp">${Math.round(temp)}°F</div>` +
+          `<div class="weather-condition">${label}</div>` +
+          `<div class="weather-detail">Wind ${Math.round(wind)} mph</div>`;
+      } catch {
+        card.innerHTML = '<div class="weather-loading">Weather unavailable</div>';
+      }
+    })();
+
+    // ── Status checks ─────────────────────────────────────────────────────────
+    const APP_URLS = {
+      quotes:  'https://quotes.micocc.net',
+      install: 'https://install.micocc.net',
+      pmcalc:  'https://pmcalc.micocc.net',
+      xml:     'https://xml.micocc.net',
+      payroll: 'https://payroll.micocc.net',
+    };
+
+    async function checkStatus(id, url) {
+      const badge = document.getElementById('status-' + id);
+      if (!badge) return;
+      try {
+        const ctrl = new AbortController();
+        const t = setTimeout(() => ctrl.abort(), 6000);
+        await fetch(url, { mode: 'no-cors', signal: ctrl.signal });
+        clearTimeout(t);
+        badge.className = 'status-badge status-live';
+        badge.innerHTML = '<span class="status-dot-circle"></span><span class="status-text">Live</span>';
+      } catch {
+        badge.className = 'status-badge status-down';
+        badge.innerHTML = '<span class="status-dot-circle"></span><span class="status-text">Down</span>';
+      }
+    }
+
+    Object.entries(APP_URLS).forEach(([id, url]) => checkStatus(id, url));
+
+    // ── Drag-to-reorder ───────────────────────────────────────────────────────
+    const STORAGE_KEY = 'mcc-dashboard-order';
+    const _grid = document.getElementById('app-grid');
+    let _sortable = null;
+
+    function saveOrder() {
+      const ids = Array.from(_grid.querySelectorAll('.app-card')).map(c => c.dataset.id);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(ids));
+    }
+
+    function restoreOrder() {
+      try {
+        const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+        if (!saved.length) return;
+        const map = {};
+        _grid.querySelectorAll('.app-card').forEach(c => map[c.dataset.id] = c);
+        saved.forEach(id => { if (map[id]) _grid.appendChild(map[id]); });
+      } catch(e) {}
+    }
+
+    function toggleEditMode(on) {
+      _grid.classList.toggle('editing', on);
+      if (on && !_sortable) {
+        _sortable = new Sortable(_grid, {
+          animation: 150,
+          handle: '.drag-handle',
+          ghostClass: 'sortable-ghost',
+          onEnd: saveOrder,
+        });
+      }
+    }
+
+    document.getElementById('edit-mode-toggle').addEventListener('change', e => toggleEditMode(e.target.checked));
+    restoreOrder();
   </script>
 
 </body>
