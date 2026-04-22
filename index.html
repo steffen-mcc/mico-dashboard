@@ -697,6 +697,27 @@
         </div>
       </div>
 
+      <!-- Packet Generator -->
+      <div class="app-card" data-id="packetgen">
+        <div class="drag-handle" title="Drag to reorder">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="4" cy="3" r="1.2" fill="currentColor"/><circle cx="10" cy="3" r="1.2" fill="currentColor"/><circle cx="4" cy="7" r="1.2" fill="currentColor"/><circle cx="10" cy="7" r="1.2" fill="currentColor"/><circle cx="4" cy="11" r="1.2" fill="currentColor"/><circle cx="10" cy="11" r="1.2" fill="currentColor"/></svg>
+        </div>
+        <div class="card-icon-wrap">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="13 2 13 9 20 9"/><line x1="9" y1="14" x2="15" y2="14"/><line x1="9" y1="18" x2="12" y2="18"/>
+          </svg>
+        </div>
+        <div class="card-name">Packet Generator</div>
+        <div class="card-desc">Generate HHC and CBRE billing packets from Sage invoices and work tickets.</div>
+        <div class="card-footer">
+          <span class="status-badge" id="status-packetgen"><span class="status-dot-circle"></span><span class="status-text">Checking…</span></span>
+          <a class="btn btn-gold" href="https://packetgen.micocc.net" target="_blank">
+            Open App
+            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+        </div>
+      </div>
+
       <!-- Payroll -->
       <div class="app-card">
         <div class="card-icon-wrap">
@@ -813,11 +834,12 @@
 
     // ── Status checks ─────────────────────────────────────────────────────────
     const APP_URLS = {
-      quotes:  'https://quotes.micocc.net',
-      install: 'https://install.micocc.net',
-      pmcalc:  'https://pmcalc.micocc.net',
-      xml:     'https://xml.micocc.net',
-      payroll: 'https://payroll.micocc.net',
+      quotes:    'https://quotes.micocc.net',
+      install:   'https://install.micocc.net',
+      pmcalc:    'https://pmcalc.micocc.net',
+      xml:       'https://xml.micocc.net',
+      packetgen: 'https://packetgen.micocc.net',
+      payroll:   'https://payroll.micocc.net',
     };
 
     async function checkStatus(id, url) {
