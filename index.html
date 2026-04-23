@@ -151,7 +151,6 @@
       gap: 24px;
     }
 
-    .hero-left {}
 
     .hero-eyebrow {
       font-size: 10px;
@@ -259,17 +258,6 @@
       border-color: rgba(200,169,74,.22);
     }
 
-    .app-card.coming-soon {
-      opacity: .62;
-      cursor: default;
-    }
-
-    .app-card.coming-soon:hover {
-      transform: none;
-      box-shadow: var(--shadow-card);
-      border-color: rgba(220,228,240,.6);
-    }
-
     /* Icon block */
     .card-icon-wrap {
       width: 46px;
@@ -316,10 +304,6 @@
       gap: 12px;
     }
 
-    .status-soon {
-      color: var(--gray-500);
-    }
-
     /* ─── BUTTONS ────────────────────────────────────────────────────────────── */
     .btn {
       display: inline-flex;
@@ -353,13 +337,6 @@
       box-shadow: 0 6px 20px rgba(200,169,74,.5),
                   inset 0 1px 0 rgba(255,255,255,.3),
                   inset 0 -2px 4px rgba(100,70,0,.3);
-    }
-
-    .btn-ghost {
-      background: var(--gray-100);
-      color: var(--gray-500);
-      box-shadow: none;
-      cursor: not-allowed;
     }
 
     /* ─── FOOTER ─────────────────────────────────────────────────────────────── */
@@ -719,7 +696,10 @@
       </div>
 
       <!-- Payroll -->
-      <div class="app-card">
+      <div class="app-card" data-id="payroll">
+        <div class="drag-handle" title="Drag to reorder">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="4" cy="3" r="1.2" fill="currentColor"/><circle cx="10" cy="3" r="1.2" fill="currentColor"/><circle cx="4" cy="7" r="1.2" fill="currentColor"/><circle cx="10" cy="7" r="1.2" fill="currentColor"/><circle cx="4" cy="11" r="1.2" fill="currentColor"/><circle cx="10" cy="11" r="1.2" fill="currentColor"/></svg>
+        </div>
         <div class="card-icon-wrap">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
             <line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
@@ -777,7 +757,11 @@
       if (_dashSession?.user?.email) {
         const raw       = _dashSession.user.email.split('@')[0].split('.')[0];
         const firstName = raw.charAt(0).toUpperCase() + raw.slice(1);
-        greetEl.innerHTML  = _greetWord + ', <span class="greeting-name">' + firstName + '</span>';
+        greetEl.textContent = _greetWord + ', ';
+        const nameSpan = document.createElement('span');
+        nameSpan.className = 'greeting-name';
+        nameSpan.textContent = firstName;
+        greetEl.appendChild(nameSpan);
         emailEl.textContent = _dashSession.user.email;
         btn.textContent     = 'Sign Out';
       } else {
