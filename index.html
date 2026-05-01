@@ -614,6 +614,63 @@
     .admin-status-active  { background: #f0fdf4; color: #15803d; }
     .admin-status-inactive { background: #fef2f2; color: #dc2626; }
     .admin-note { font-size: 11px; color: var(--silver); margin-top: 10px; }
+
+    /* Hardcoded legacy tiles — hidden; tiles now come from Supabase */
+    .app-card-legacy { display: none !important; }
+
+    /* ─── ADMIN TABS ─────────────────────────────────────────────────────────── */
+    .admin-tabs {
+      display: flex;
+      gap: 0;
+      margin-bottom: 24px;
+      border-bottom: 2px solid var(--gray-100);
+    }
+    .admin-tab-btn {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 10px 22px;
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -2px;
+      color: var(--gray-500);
+      cursor: pointer;
+      transition: color .15s, border-color .15s;
+    }
+    .admin-tab-btn:hover { color: var(--navy); }
+    .admin-tab-btn.active { color: var(--navy); border-bottom-color: var(--accent); }
+    .admin-form-input {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      padding: 8px 12px;
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-sm);
+      outline: none;
+      width: 100%;
+      color: var(--gray-900);
+      transition: border-color .15s;
+    }
+    .admin-form-input:focus { border-color: var(--accent); }
+    .admin-form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .admin-form-box {
+      margin-top: 24px;
+      background: var(--gray-50);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--gray-200);
+      padding: 22px 24px;
+    }
+    .admin-form-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 16px;
+    }
   </style>
 </head>
 <body>
@@ -667,7 +724,7 @@
     <div class="app-grid" id="app-grid">
 
       <!-- Service Quotes -->
-      <div class="app-card" data-id="quotes" data-min-role="staff">
+      <div class="app-card app-card-legacy" data-id="quotes" data-min-role="staff">
         <div class="drag-handle" title="Drag to reorder">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="4" cy="3" r="1.2" fill="currentColor"/><circle cx="10" cy="3" r="1.2" fill="currentColor"/><circle cx="4" cy="7" r="1.2" fill="currentColor"/><circle cx="10" cy="7" r="1.2" fill="currentColor"/><circle cx="4" cy="11" r="1.2" fill="currentColor"/><circle cx="10" cy="11" r="1.2" fill="currentColor"/></svg>
         </div>
@@ -688,7 +745,7 @@
       </div>
 
       <!-- Install Quotes -->
-      <div class="app-card" data-id="install" data-min-role="staff">
+      <div class="app-card app-card-legacy" data-id="install" data-min-role="staff">
         <div class="drag-handle" title="Drag to reorder">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="4" cy="3" r="1.2" fill="currentColor"/><circle cx="10" cy="3" r="1.2" fill="currentColor"/><circle cx="4" cy="7" r="1.2" fill="currentColor"/><circle cx="10" cy="7" r="1.2" fill="currentColor"/><circle cx="4" cy="11" r="1.2" fill="currentColor"/><circle cx="10" cy="11" r="1.2" fill="currentColor"/></svg>
         </div>
@@ -709,7 +766,7 @@
       </div>
 
       <!-- PM Calculator -->
-      <div class="app-card" data-id="pmcalc" data-min-role="staff">
+      <div class="app-card app-card-legacy" data-id="pmcalc" data-min-role="staff">
         <div class="drag-handle" title="Drag to reorder">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="4" cy="3" r="1.2" fill="currentColor"/><circle cx="10" cy="3" r="1.2" fill="currentColor"/><circle cx="4" cy="7" r="1.2" fill="currentColor"/><circle cx="10" cy="7" r="1.2" fill="currentColor"/><circle cx="4" cy="11" r="1.2" fill="currentColor"/><circle cx="10" cy="11" r="1.2" fill="currentColor"/></svg>
         </div>
@@ -730,7 +787,7 @@
       </div>
 
       <!-- XML Checker -->
-      <div class="app-card" data-id="xml" data-min-role="staff">
+      <div class="app-card app-card-legacy" data-id="xml" data-min-role="staff">
         <div class="drag-handle" title="Drag to reorder">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="4" cy="3" r="1.2" fill="currentColor"/><circle cx="10" cy="3" r="1.2" fill="currentColor"/><circle cx="4" cy="7" r="1.2" fill="currentColor"/><circle cx="10" cy="7" r="1.2" fill="currentColor"/><circle cx="4" cy="11" r="1.2" fill="currentColor"/><circle cx="10" cy="11" r="1.2" fill="currentColor"/></svg>
         </div>
@@ -751,7 +808,7 @@
       </div>
 
       <!-- Packet Generator -->
-      <div class="app-card" data-id="packetgen" data-min-role="staff">
+      <div class="app-card app-card-legacy" data-id="packetgen" data-min-role="staff">
         <div class="drag-handle" title="Drag to reorder">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="4" cy="3" r="1.2" fill="currentColor"/><circle cx="10" cy="3" r="1.2" fill="currentColor"/><circle cx="4" cy="7" r="1.2" fill="currentColor"/><circle cx="10" cy="7" r="1.2" fill="currentColor"/><circle cx="4" cy="11" r="1.2" fill="currentColor"/><circle cx="10" cy="11" r="1.2" fill="currentColor"/></svg>
         </div>
@@ -772,7 +829,7 @@
       </div>
 
       <!-- Payroll -->
-      <div class="app-card" data-id="payroll" data-min-role="staff">
+      <div class="app-card app-card-legacy" data-id="payroll" data-min-role="staff">
         <div class="drag-handle" title="Drag to reorder">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="4" cy="3" r="1.2" fill="currentColor"/><circle cx="10" cy="3" r="1.2" fill="currentColor"/><circle cx="4" cy="7" r="1.2" fill="currentColor"/><circle cx="10" cy="7" r="1.2" fill="currentColor"/><circle cx="4" cy="11" r="1.2" fill="currentColor"/><circle cx="10" cy="11" r="1.2" fill="currentColor"/></svg>
         </div>
@@ -793,7 +850,7 @@
       </div>
 
       <!-- Financial Dashboard -->
-      <div class="app-card" data-id="finance" data-min-role="executive">
+      <div class="app-card app-card-legacy" data-id="finance" data-min-role="executive">
         <div class="drag-handle" title="Drag to reorder">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="4" cy="3" r="1.2" fill="currentColor"/><circle cx="10" cy="3" r="1.2" fill="currentColor"/><circle cx="4" cy="7" r="1.2" fill="currentColor"/><circle cx="10" cy="7" r="1.2" fill="currentColor"/><circle cx="4" cy="11" r="1.2" fill="currentColor"/><circle cx="10" cy="11" r="1.2" fill="currentColor"/></svg>
         </div>
@@ -814,7 +871,7 @@
       </div>
 
       <!-- Timesheets -->
-      <div class="app-card" data-id="timesheets" data-min-role="technician">
+      <div class="app-card app-card-legacy" data-id="timesheets" data-min-role="technician">
         <div class="drag-handle" title="Drag to reorder">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="4" cy="3" r="1.2" fill="currentColor"/><circle cx="10" cy="3" r="1.2" fill="currentColor"/><circle cx="4" cy="7" r="1.2" fill="currentColor"/><circle cx="10" cy="7" r="1.2" fill="currentColor"/><circle cx="4" cy="11" r="1.2" fill="currentColor"/><circle cx="10" cy="11" r="1.2" fill="currentColor"/></svg>
         </div>
@@ -839,10 +896,21 @@
     <!-- ── Admin Panel ─────────────────────────────────────────────────────────── -->
     <div id="admin-section" style="display:none; margin-top:48px;">
       <div class="section-header">
-        <div class="section-title">User Management</div>
+        <div class="section-title">Admin</div>
       </div>
-      <div id="admin-panel-content">
-        <div style="color:var(--silver);font-size:13px;">Loading users…</div>
+      <div class="admin-tabs">
+        <button class="admin-tab-btn active" onclick="showAdminTab('users')">Users</button>
+        <button class="admin-tab-btn" onclick="showAdminTab('apps')">Apps</button>
+      </div>
+      <div id="admin-users-panel">
+        <div id="admin-panel-content">
+          <div style="color:var(--silver);font-size:13px;">Loading users…</div>
+        </div>
+      </div>
+      <div id="admin-apps-panel" style="display:none">
+        <div id="admin-apps-content">
+          <div style="color:var(--silver);font-size:13px;">Loading apps…</div>
+        </div>
       </div>
     </div>
 
@@ -886,20 +954,8 @@
     }
 
     function applyRoleVisibility(role) {
-      const cards = document.querySelectorAll('.app-card[data-min-role]');
-      if (!_dashSession) {
-        // Not signed in — hide every tile
-        cards.forEach(card => card.style.display = 'none');
-        return;
-      }
-      // Signed in: apply role restrictions if we got one back.
-      // If the lookup failed (null), show everything — apps enforce their own auth.
-      if (role) {
-        cards.forEach(card => {
-          if (!hasAccess(role, card.dataset.minRole)) card.style.display = 'none';
-        });
-      }
-      // Show admin panel only for confirmed admins
+      if (!_dashSession) return; // not signed in — grid stays empty (legacy tiles are CSS-hidden)
+      loadDashboardApps(role);  // load tiles from Supabase, filtered by role
       if (role === 'admin') {
         const sec = document.getElementById('admin-section');
         if (sec) { sec.style.display = 'block'; loadAdminPanel(); }
@@ -955,6 +1011,56 @@
         // Not signed in — go to login with redirect back here
         window.location.href = 'https://login.micocc.net/?redirect=' + encodeURIComponent(location.href);
       }
+    }
+
+    // ── App tile icons ────────────────────────────────────────────────────────
+    const APP_ICONS = {
+      quotes:     '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>',
+      install:    '<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>',
+      pmcalc:     '<rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="16" y1="14" x2="16" y2="18"/><line x1="8" y1="14" x2="8" y2="14"/><line x1="12" y1="14" x2="12" y2="14"/><line x1="8" y1="17" x2="8" y2="17"/><line x1="12" y1="17" x2="12" y2="17"/><line x1="8" y1="11" x2="16" y2="11"/>',
+      xml:        '<polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>',
+      packetgen:  '<path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="13 2 13 9 20 9"/><line x1="9" y1="14" x2="15" y2="14"/><line x1="9" y1="18" x2="12" y2="18"/>',
+      payroll:    '<line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>',
+      finance:    '<line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>',
+      timesheets: '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>',
+      default:    '<rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>',
+    };
+    const _OPEN_SVG  = '<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>';
+    const _DRAG_DOTS = '<circle cx="4" cy="3" r="1.2" fill="currentColor"/><circle cx="10" cy="3" r="1.2" fill="currentColor"/><circle cx="4" cy="7" r="1.2" fill="currentColor"/><circle cx="10" cy="7" r="1.2" fill="currentColor"/><circle cx="4" cy="11" r="1.2" fill="currentColor"/><circle cx="10" cy="11" r="1.2" fill="currentColor"/>';
+
+    function renderAppCard(app) {
+      const icon = APP_ICONS[app.icon] || APP_ICONS.default;
+      return `<div class="app-card" data-id="${app.id}">
+        <div class="drag-handle" title="Drag to reorder">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">${_DRAG_DOTS}</svg>
+        </div>
+        <div class="card-icon-wrap">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">${icon}</svg>
+        </div>
+        <div class="card-name">${app.name}</div>
+        <div class="card-desc">${app.description}</div>
+        <div class="card-footer">
+          <span class="status-badge" id="status-${app.id}"><span class="status-dot-circle"></span><span class="status-text">Checking…</span></span>
+          <a class="btn btn-gold" href="${app.url}" target="_blank">Open App
+            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">${_OPEN_SVG}</svg>
+          </a>
+        </div>
+      </div>`;
+    }
+
+    async function loadDashboardApps(role) {
+      _grid.innerHTML = '';
+      if (!_dashAuthClient) return;
+      const { data: apps, error } = await _dashAuthClient
+        .from('dashboard_apps').select('*').order('sort_order');
+      if (error || !apps || !apps.length) return;
+      apps.forEach(app => {
+        if (!role || hasAccess(role, app.min_role)) {
+          _grid.insertAdjacentHTML('beforeend', renderAppCard(app));
+        }
+      });
+      restoreOrder();
+      apps.forEach(app => { if (document.getElementById('status-' + app.id)) checkStatus(app.id, app.url); });
     }
 
     // ── Admin Panel ───────────────────────────────────────────────────────────
@@ -1032,6 +1138,92 @@
       else await loadAdminPanel();
     }
 
+    // ── Admin tabs ────────────────────────────────────────────────────────────
+    function showAdminTab(tab) {
+      document.querySelectorAll('.admin-tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.admin-tab-btn').forEach(b => {
+        if (b.getAttribute('onclick') === `showAdminTab('${tab}')`) b.classList.add('active');
+      });
+      document.getElementById('admin-users-panel').style.display = tab === 'users' ? '' : 'none';
+      document.getElementById('admin-apps-panel').style.display  = tab === 'apps'  ? '' : 'none';
+      if (tab === 'apps') loadAdminApps();
+    }
+
+    // ── Admin — Apps ──────────────────────────────────────────────────────────
+    async function loadAdminApps() {
+      const container = document.getElementById('admin-apps-content');
+      container.innerHTML = '<div style="color:var(--silver);font-size:13px;">Loading apps…</div>';
+      const { data: apps, error } = await _dashAuthClient
+        .from('dashboard_apps').select('*').order('sort_order');
+      if (error || !apps) { container.innerHTML = '<div style="color:#c0392b;font-size:13px;">Failed to load apps.</div>'; return; }
+
+      const rows = apps.map(a => `
+        <tr class="${a.is_active ? '' : 'admin-row-inactive'}">
+          <td><strong>${a.name}</strong></td>
+          <td class="admin-email-cell">${a.url}</td>
+          <td><select class="admin-role-select" onchange="updateAppRole('${a.id}',this.value,this)">
+            ${['technician','staff','executive','admin'].map(r =>
+              `<option value="${r}"${a.min_role === r ? ' selected' : ''}>${ROLE_LABELS[r]}</option>`
+            ).join('')}
+          </select></td>
+          <td><span class="admin-status-badge admin-status-${a.is_active ? 'active':'inactive'}">${a.is_active ? 'Active':'Inactive'}</span></td>
+          <td><button class="admin-deact-btn${a.is_active ? '' : ' admin-react-btn'}" onclick="toggleAppActive('${a.id}',${a.is_active},this)">${a.is_active ? 'Disable':'Enable'}</button></td>
+        </tr>`).join('');
+
+      const roleOpts = ['technician','staff','executive','admin'].map(r =>
+        `<option value="${r}"${r==='staff'?' selected':''}>${ROLE_LABELS[r]}</option>`).join('');
+
+      container.innerHTML = `
+        <table class="admin-table">
+          <thead><tr><th>App</th><th>URL</th><th>Min Role</th><th>Status</th><th>Actions</th></tr></thead>
+          <tbody>${rows}</tbody>
+        </table>
+        <div class="admin-form-box">
+          <div class="admin-form-title">Add New App</div>
+          <div class="admin-form-row">
+            <input id="nap-name" class="admin-form-input" placeholder="App name" />
+            <input id="nap-url"  class="admin-form-input" placeholder="https://..." />
+          </div>
+          <div class="admin-form-row">
+            <input id="nap-desc" class="admin-form-input" placeholder="Short description" />
+            <select id="nap-role" class="admin-role-select" style="width:100%">${roleOpts}</select>
+          </div>
+          <input id="nap-icon" class="admin-form-input" placeholder="Icon key (quotes / install / pmcalc / xml / packetgen / payroll / finance / timesheets / default)" style="margin-bottom:12px" />
+          <button class="btn btn-gold" onclick="saveNewApp()" style="margin-top:4px">+ Add App</button>
+        </div>
+        <p class="admin-note">${apps.length} app${apps.length!==1?'s':''} total &nbsp;·&nbsp; Role changes apply on next dashboard load</p>`;
+    }
+
+    async function updateAppRole(appId, newRole, el) {
+      el.disabled = true;
+      const { error } = await _dashAuthClient.from('dashboard_apps').update({ min_role: newRole }).eq('id', appId);
+      if (error) alert('Failed: ' + error.message);
+      el.disabled = false;
+    }
+
+    async function toggleAppActive(appId, active, btnEl) {
+      if (!confirm(`${active ? 'Disable' : 'Enable'} this app?`)) return;
+      btnEl.disabled = true;
+      const { error } = await _dashAuthClient.from('dashboard_apps').update({ is_active: !active }).eq('id', appId);
+      if (error) { alert('Failed: ' + error.message); btnEl.disabled = false; }
+      else await loadAdminApps();
+    }
+
+    async function saveNewApp() {
+      const name = document.getElementById('nap-name').value.trim();
+      const url  = document.getElementById('nap-url').value.trim();
+      const desc = document.getElementById('nap-desc').value.trim();
+      const role = document.getElementById('nap-role').value;
+      const icon = document.getElementById('nap-icon').value.trim() || 'default';
+      if (!name || !url) { alert('Name and URL are required.'); return; }
+      if (!url.startsWith('http')) { alert('URL must start with https://'); return; }
+      const { error } = await _dashAuthClient.from('dashboard_apps')
+        .insert({ name, url, description: desc, min_role: role, icon, sort_order: 999 });
+      if (error) { alert('Failed: ' + error.message); return; }
+      ['nap-name','nap-url','nap-desc','nap-icon'].forEach(id => document.getElementById(id).value = '');
+      await loadAdminApps();
+    }
+
     // ── Weather ──────────────────────────────────────────────────────────────
     function weatherDesc(code) {
       if (code === 0)                           return ['☀️', 'Clear Sky'];
@@ -1068,17 +1260,6 @@
     })();
 
     // ── Status checks ─────────────────────────────────────────────────────────
-    const APP_URLS = {
-      quotes:     'https://quotes.micocc.net',
-      install:    'https://install.micocc.net',
-      pmcalc:     'https://pmcalc.micocc.net',
-      xml:        'https://xml.micocc.net',
-      packetgen:  'https://packetgen.micocc.net',
-      payroll:    'https://payroll.micocc.net',
-      finance:    'https://finance.micocc.net',
-      timesheets: 'https://timesheets.micocc.net',
-    };
-
     async function checkStatus(id, url) {
       const badge = document.getElementById('status-' + id);
       if (!badge) return;
@@ -1094,8 +1275,6 @@
         badge.innerHTML = '<span class="status-dot-circle"></span><span class="status-text">Down</span>';
       }
     }
-
-    Object.entries(APP_URLS).forEach(([id, url]) => checkStatus(id, url));
 
     // ── Drag-to-reorder ───────────────────────────────────────────────────────
     const STORAGE_KEY = 'mcc-dashboard-order';
@@ -1130,7 +1309,6 @@
     }
 
     document.getElementById('edit-mode-toggle').addEventListener('change', e => toggleEditMode(e.target.checked));
-    restoreOrder();
 
     // Logo → refresh page
     const _logo = document.querySelector('.nav-logo-img');
