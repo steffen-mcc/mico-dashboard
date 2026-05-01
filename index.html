@@ -538,6 +538,82 @@
     .status-badge.status-live .status-dot-circle { background: #22c55e; }
     .status-badge.status-down { background: #fef2f2; color: #dc2626; }
     .status-badge.status-down .status-dot-circle { background: #ef4444; }
+
+    /* ─── ADMIN PANEL ────────────────────────────────────────────────────────── */
+    .admin-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
+      border: 1px solid rgba(220,228,240,.6);
+    }
+    .admin-table th {
+      background: var(--navy);
+      color: var(--accent);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .8px;
+      text-transform: uppercase;
+      padding: 13px 16px;
+      text-align: left;
+    }
+    .admin-table td {
+      padding: 11px 16px;
+      font-size: 13px;
+      color: var(--gray-700);
+      border-bottom: 1px solid var(--gray-100);
+      vertical-align: middle;
+    }
+    .admin-table tbody tr:last-child td { border-bottom: none; }
+    .admin-table tbody tr:hover td { background: var(--gray-50); }
+    .admin-row-inactive td { opacity: .4; }
+    .admin-email-cell { font-size: 11px !important; color: var(--gray-500) !important; }
+    .admin-role-select {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 5px 10px;
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-sm);
+      background: var(--white);
+      color: var(--navy);
+      cursor: pointer;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .admin-role-select:hover:not(:disabled) { border-color: var(--accent); }
+    .admin-role-select:disabled { opacity: .45; cursor: default; }
+    .admin-deact-btn {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .3px;
+      padding: 5px 12px;
+      border: 1px solid #e74c3c;
+      background: transparent;
+      color: #e74c3c;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: background .15s, color .15s;
+    }
+    .admin-deact-btn:hover:not(:disabled) { background: #e74c3c; color: #fff; }
+    .admin-deact-btn:disabled { opacity: .5; cursor: default; }
+    .admin-react-btn { border-color: var(--green) !important; color: var(--green) !important; }
+    .admin-react-btn:hover:not(:disabled) { background: var(--green) !important; color: #fff !important; }
+    .admin-status-badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      border-radius: 20px;
+    }
+    .admin-status-active  { background: #f0fdf4; color: #15803d; }
+    .admin-status-inactive { background: #fef2f2; color: #dc2626; }
+    .admin-note { font-size: 11px; color: var(--silver); margin-top: 10px; }
   </style>
 </head>
 <body>
@@ -591,7 +667,7 @@
     <div class="app-grid" id="app-grid">
 
       <!-- Service Quotes -->
-      <div class="app-card" data-id="quotes">
+      <div class="app-card" data-id="quotes" data-min-role="staff">
         <div class="drag-handle" title="Drag to reorder">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="4" cy="3" r="1.2" fill="currentColor"/><circle cx="10" cy="3" r="1.2" fill="currentColor"/><circle cx="4" cy="7" r="1.2" fill="currentColor"/><circle cx="10" cy="7" r="1.2" fill="currentColor"/><circle cx="4" cy="11" r="1.2" fill="currentColor"/><circle cx="10" cy="11" r="1.2" fill="currentColor"/></svg>
         </div>
@@ -612,7 +688,7 @@
       </div>
 
       <!-- Install Quotes -->
-      <div class="app-card" data-id="install">
+      <div class="app-card" data-id="install" data-min-role="staff">
         <div class="drag-handle" title="Drag to reorder">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="4" cy="3" r="1.2" fill="currentColor"/><circle cx="10" cy="3" r="1.2" fill="currentColor"/><circle cx="4" cy="7" r="1.2" fill="currentColor"/><circle cx="10" cy="7" r="1.2" fill="currentColor"/><circle cx="4" cy="11" r="1.2" fill="currentColor"/><circle cx="10" cy="11" r="1.2" fill="currentColor"/></svg>
         </div>
@@ -633,7 +709,7 @@
       </div>
 
       <!-- PM Calculator -->
-      <div class="app-card" data-id="pmcalc">
+      <div class="app-card" data-id="pmcalc" data-min-role="staff">
         <div class="drag-handle" title="Drag to reorder">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="4" cy="3" r="1.2" fill="currentColor"/><circle cx="10" cy="3" r="1.2" fill="currentColor"/><circle cx="4" cy="7" r="1.2" fill="currentColor"/><circle cx="10" cy="7" r="1.2" fill="currentColor"/><circle cx="4" cy="11" r="1.2" fill="currentColor"/><circle cx="10" cy="11" r="1.2" fill="currentColor"/></svg>
         </div>
@@ -654,7 +730,7 @@
       </div>
 
       <!-- XML Checker -->
-      <div class="app-card" data-id="xml">
+      <div class="app-card" data-id="xml" data-min-role="staff">
         <div class="drag-handle" title="Drag to reorder">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="4" cy="3" r="1.2" fill="currentColor"/><circle cx="10" cy="3" r="1.2" fill="currentColor"/><circle cx="4" cy="7" r="1.2" fill="currentColor"/><circle cx="10" cy="7" r="1.2" fill="currentColor"/><circle cx="4" cy="11" r="1.2" fill="currentColor"/><circle cx="10" cy="11" r="1.2" fill="currentColor"/></svg>
         </div>
@@ -675,7 +751,7 @@
       </div>
 
       <!-- Packet Generator -->
-      <div class="app-card" data-id="packetgen">
+      <div class="app-card" data-id="packetgen" data-min-role="staff">
         <div class="drag-handle" title="Drag to reorder">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="4" cy="3" r="1.2" fill="currentColor"/><circle cx="10" cy="3" r="1.2" fill="currentColor"/><circle cx="4" cy="7" r="1.2" fill="currentColor"/><circle cx="10" cy="7" r="1.2" fill="currentColor"/><circle cx="4" cy="11" r="1.2" fill="currentColor"/><circle cx="10" cy="11" r="1.2" fill="currentColor"/></svg>
         </div>
@@ -696,7 +772,7 @@
       </div>
 
       <!-- Payroll -->
-      <div class="app-card" data-id="payroll">
+      <div class="app-card" data-id="payroll" data-min-role="staff">
         <div class="drag-handle" title="Drag to reorder">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="4" cy="3" r="1.2" fill="currentColor"/><circle cx="10" cy="3" r="1.2" fill="currentColor"/><circle cx="4" cy="7" r="1.2" fill="currentColor"/><circle cx="10" cy="7" r="1.2" fill="currentColor"/><circle cx="4" cy="11" r="1.2" fill="currentColor"/><circle cx="10" cy="11" r="1.2" fill="currentColor"/></svg>
         </div>
@@ -716,6 +792,58 @@
         </div>
       </div>
 
+      <!-- Financial Dashboard -->
+      <div class="app-card" data-id="finance" data-min-role="executive">
+        <div class="drag-handle" title="Drag to reorder">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="4" cy="3" r="1.2" fill="currentColor"/><circle cx="10" cy="3" r="1.2" fill="currentColor"/><circle cx="4" cy="7" r="1.2" fill="currentColor"/><circle cx="10" cy="7" r="1.2" fill="currentColor"/><circle cx="4" cy="11" r="1.2" fill="currentColor"/><circle cx="10" cy="11" r="1.2" fill="currentColor"/></svg>
+        </div>
+        <div class="card-icon-wrap">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
+          </svg>
+        </div>
+        <div class="card-name">Financial Dashboard</div>
+        <div class="card-desc">Month-end close wizard, AR/AP analysis, Master Bill, and executive reporting.</div>
+        <div class="card-footer">
+          <span class="status-badge" id="status-finance"><span class="status-dot-circle"></span><span class="status-text">Checking…</span></span>
+          <a class="btn btn-gold" href="https://finance.micocc.net" target="_blank">
+            Open App
+            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Timesheets -->
+      <div class="app-card" data-id="timesheets" data-min-role="technician">
+        <div class="drag-handle" title="Drag to reorder">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="4" cy="3" r="1.2" fill="currentColor"/><circle cx="10" cy="3" r="1.2" fill="currentColor"/><circle cx="4" cy="7" r="1.2" fill="currentColor"/><circle cx="10" cy="7" r="1.2" fill="currentColor"/><circle cx="4" cy="11" r="1.2" fill="currentColor"/><circle cx="10" cy="11" r="1.2" fill="currentColor"/></svg>
+        </div>
+        <div class="card-icon-wrap">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+          </svg>
+        </div>
+        <div class="card-name">Timesheets</div>
+        <div class="card-desc">Submit and manage weekly timesheets for payroll processing.</div>
+        <div class="card-footer">
+          <span class="status-badge" id="status-timesheets"><span class="status-dot-circle"></span><span class="status-text">Checking…</span></span>
+          <a class="btn btn-gold" href="https://timesheets.micocc.net" target="_blank">
+            Open App
+            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── Admin Panel ─────────────────────────────────────────────────────────── -->
+    <div id="admin-section" style="display:none; margin-top:48px;">
+      <div class="section-header">
+        <div class="section-title">User Management</div>
+      </div>
+      <div id="admin-panel-content">
+        <div style="color:var(--silver);font-size:13px;">Loading users…</div>
+      </div>
     </div>
 
     <div class="page-footer">MICO Cooling Corp &nbsp;·&nbsp; Internal Use Only</div>
@@ -735,6 +863,39 @@
 
     const _hr = _d.getHours();
     const _greetWord = _hr < 12 ? 'Good morning' : _hr < 17 ? 'Good afternoon' : 'Good evening';
+
+    // ── Role system ───────────────────────────────────────────────────────────
+    const ROLE_LEVELS = { technician: 1, staff: 2, executive: 3, admin: 4 };
+    let _userRole = null;
+
+    async function getMicoUserRole(userId) {
+      if (!_dashAuthClient || !userId) return null;
+      try {
+        const { data, error } = await _dashAuthClient
+          .from('profiles')
+          .select('role, is_active')
+          .eq('id', userId)
+          .single();
+        if (error || !data || !data.is_active) return null;
+        return data.role;
+      } catch(e) { return null; }
+    }
+
+    function hasAccess(userRole, minimumRole) {
+      return (ROLE_LEVELS[userRole] ?? 0) >= (ROLE_LEVELS[minimumRole] ?? 99);
+    }
+
+    function applyRoleVisibility(role) {
+      // Hide tiles the user doesn't have access to
+      document.querySelectorAll('.app-card[data-min-role]').forEach(card => {
+        if (!hasAccess(role, card.dataset.minRole)) card.style.display = 'none';
+      });
+      // Show admin panel only for admins
+      if (role === 'admin') {
+        const sec = document.getElementById('admin-section');
+        if (sec) { sec.style.display = 'block'; loadAdminPanel(); }
+      }
+    }
 
     let _dashAuthClient = null;
     let _dashSession    = null;
@@ -768,6 +929,12 @@
         greetEl.textContent = _greetWord;
         btn.textContent     = 'Sign In';
       }
+
+      // ── Role check ─────────────────────────────────────────────────────────
+      if (_dashSession?.user?.id) {
+        _userRole = await getMicoUserRole(_dashSession.user.id);
+      }
+      applyRoleVisibility(_userRole);
     })();
 
     async function handleAuthBtn() {
@@ -779,6 +946,81 @@
         // Not signed in — go to login with redirect back here
         window.location.href = 'https://login.micocc.net/?redirect=' + encodeURIComponent(location.href);
       }
+    }
+
+    // ── Admin Panel ───────────────────────────────────────────────────────────
+    const ROLE_LABELS = { admin: 'Admin', executive: 'Executive', staff: 'Staff', technician: 'Technician' };
+
+    async function loadAdminPanel() {
+      const container = document.getElementById('admin-panel-content');
+      container.innerHTML = '<div style="color:var(--silver);font-size:13px;">Loading users…</div>';
+
+      const { data: profiles, error } = await _dashAuthClient
+        .from('profiles')
+        .select('id, email, full_name, role, last_login, is_active')
+        .order('full_name');
+
+      if (error || !profiles) {
+        container.innerHTML = '<div style="color:#c0392b;font-size:13px;">Failed to load users. ' + (error?.message||'') + '</div>';
+        return;
+      }
+
+      const myId = _dashSession?.user?.id;
+
+      const rows = profiles.map(p => {
+        const lastLogin = p.last_login
+          ? new Date(p.last_login).toLocaleDateString('en-US', {month:'short',day:'numeric',year:'numeric'}) + ' ' +
+            new Date(p.last_login).toLocaleTimeString('en-US', {hour:'2-digit',minute:'2-digit'})
+          : '—';
+        const isMe = p.id === myId;
+        const rowClass = p.is_active ? '' : 'admin-row-inactive';
+
+        const roleOpts = ['admin','executive','staff','technician'].map(r =>
+          `<option value="${r}"${p.role === r ? ' selected' : ''}>${ROLE_LABELS[r]}</option>`
+        ).join('');
+
+        const roleSelect = `<select class="admin-role-select" onchange="updateUserRole('${p.id}',this.value,this)"${isMe ? ' disabled title="Cannot change your own role"' : ''}>${roleOpts}</select>`;
+
+        const actionBtn = isMe ? '<span style="font-size:11px;color:var(--silver)">—</span>'
+          : `<button class="admin-deact-btn${p.is_active ? '' : ' admin-react-btn'}" onclick="toggleUserActive('${p.id}',${p.is_active},this)">${p.is_active ? 'Deactivate' : 'Reactivate'}</button>`;
+
+        return `<tr class="${rowClass}">
+          <td>${p.full_name || '—'}</td>
+          <td class="admin-email-cell">${p.email}</td>
+          <td>${roleSelect}</td>
+          <td>${lastLogin}</td>
+          <td><span class="admin-status-badge admin-status-${p.is_active ? 'active' : 'inactive'}">${p.is_active ? 'Active' : 'Inactive'}</span></td>
+          <td>${actionBtn}</td>
+        </tr>`;
+      }).join('');
+
+      container.innerHTML = `
+        <table class="admin-table">
+          <thead><tr>
+            <th>Name</th><th>Email</th><th>Role</th><th>Last Login</th><th>Status</th><th>Actions</th>
+          </tr></thead>
+          <tbody>${rows}</tbody>
+        </table>
+        <p class="admin-note">${profiles.length} user${profiles.length !== 1 ? 's' : ''} &nbsp;·&nbsp; Role changes take effect on next login</p>`;
+    }
+
+    async function updateUserRole(userId, newRole, selectEl) {
+      selectEl.disabled = true;
+      const { error } = await _dashAuthClient.from('profiles').update({ role: newRole }).eq('id', userId);
+      if (error) {
+        alert('Failed to update role: ' + error.message);
+        await loadAdminPanel();
+      } else {
+        selectEl.disabled = false;
+      }
+    }
+
+    async function toggleUserActive(userId, currentlyActive, btnEl) {
+      if (!confirm(`Are you sure you want to ${currentlyActive ? 'deactivate' : 'reactivate'} this user?`)) return;
+      btnEl.disabled = true;
+      const { error } = await _dashAuthClient.from('profiles').update({ is_active: !currentlyActive }).eq('id', userId);
+      if (error) { alert('Failed: ' + error.message); btnEl.disabled = false; }
+      else await loadAdminPanel();
     }
 
     // ── Weather ──────────────────────────────────────────────────────────────
@@ -818,12 +1060,14 @@
 
     // ── Status checks ─────────────────────────────────────────────────────────
     const APP_URLS = {
-      quotes:    'https://quotes.micocc.net',
-      install:   'https://install.micocc.net',
-      pmcalc:    'https://pmcalc.micocc.net',
-      xml:       'https://xml.micocc.net',
-      packetgen: 'https://packetgen.micocc.net',
-      payroll:   'https://payroll.micocc.net',
+      quotes:     'https://quotes.micocc.net',
+      install:    'https://install.micocc.net',
+      pmcalc:     'https://pmcalc.micocc.net',
+      xml:        'https://xml.micocc.net',
+      packetgen:  'https://packetgen.micocc.net',
+      payroll:    'https://payroll.micocc.net',
+      finance:    'https://finance.micocc.net',
+      timesheets: 'https://timesheets.micocc.net',
     };
 
     async function checkStatus(id, url) {
