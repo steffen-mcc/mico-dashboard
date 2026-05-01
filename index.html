@@ -886,11 +886,16 @@
     }
 
     function applyRoleVisibility(role) {
-      // Only apply tile restrictions if we got a confirmed role back.
-      // If the lookup failed (null), show everything — the individual apps
-      // enforce their own auth so no real security risk from showing links.
+      const cards = document.querySelectorAll('.app-card[data-min-role]');
+      if (!_dashSession) {
+        // Not signed in — hide every tile
+        cards.forEach(card => card.style.display = 'none');
+        return;
+      }
+      // Signed in: apply role restrictions if we got one back.
+      // If the lookup failed (null), show everything — apps enforce their own auth.
       if (role) {
-        document.querySelectorAll('.app-card[data-min-role]').forEach(card => {
+        cards.forEach(card => {
           if (!hasAccess(role, card.dataset.minRole)) card.style.display = 'none';
         });
       }
