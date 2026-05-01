@@ -886,11 +886,15 @@
     }
 
     function applyRoleVisibility(role) {
-      // Hide tiles the user doesn't have access to
-      document.querySelectorAll('.app-card[data-min-role]').forEach(card => {
-        if (!hasAccess(role, card.dataset.minRole)) card.style.display = 'none';
-      });
-      // Show admin panel only for admins
+      // Only apply tile restrictions if we got a confirmed role back.
+      // If the lookup failed (null), show everything — the individual apps
+      // enforce their own auth so no real security risk from showing links.
+      if (role) {
+        document.querySelectorAll('.app-card[data-min-role]').forEach(card => {
+          if (!hasAccess(role, card.dataset.minRole)) card.style.display = 'none';
+        });
+      }
+      // Show admin panel only for confirmed admins
       if (role === 'admin') {
         const sec = document.getElementById('admin-section');
         if (sec) { sec.style.display = 'block'; loadAdminPanel(); }
