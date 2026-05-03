@@ -1122,6 +1122,11 @@
     }
 
     // ── Admin Panel ───────────────────────────────────────────────────────────
+    function escHtml(str) {
+      if (!str) return '';
+      return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+
     const ROLE_LABELS = { admin: 'Admin', executive: 'Executive', staff: 'Staff', technician: 'Technician' };
 
     async function loadAdminPanel() {
@@ -1134,7 +1139,7 @@
         .order('full_name');
 
       if (error || !profiles) {
-        container.innerHTML = '<div style="color:#c0392b;font-size:13px;">Failed to load users. ' + (error?.message||'') + '</div>';
+        container.innerHTML = '<div style="color:#c0392b;font-size:13px;">Failed to load users. Please try again.</div>';
         return;
       }
 
@@ -1158,8 +1163,8 @@
           : `<button class="admin-deact-btn${p.is_active ? '' : ' admin-react-btn'}" onclick="toggleUserActive('${p.id}',${p.is_active},this)">${p.is_active ? 'Deactivate' : 'Reactivate'}</button>`;
 
         return `<tr class="${rowClass}">
-          <td>${p.full_name || '—'}</td>
-          <td class="admin-email-cell">${p.email}</td>
+          <td>${escHtml(p.full_name) || '—'}</td>
+          <td class="admin-email-cell">${escHtml(p.email)}</td>
           <td>${roleSelect}</td>
           <td>${lastLogin}</td>
           <td><span class="admin-status-badge admin-status-${p.is_active ? 'active' : 'inactive'}">${p.is_active ? 'Active' : 'Inactive'}</span></td>
@@ -1217,8 +1222,8 @@
 
       const rows = apps.map(a => `
         <tr class="${a.is_active ? '' : 'admin-row-inactive'}">
-          <td><strong>${a.name}</strong></td>
-          <td class="admin-email-cell">${a.url}</td>
+          <td><strong>${escHtml(a.name)}</strong></td>
+          <td class="admin-email-cell">${escHtml(a.url)}</td>
           <td><select class="admin-role-select" onchange="updateAppRole('${a.id}',this.value,this)">
             ${['technician','staff','executive','admin'].map(r =>
               `<option value="${r}"${a.min_role === r ? ' selected' : ''}>${ROLE_LABELS[r]}</option>`
