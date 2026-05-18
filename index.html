@@ -614,6 +614,19 @@
     .admin-status-active  { background: #f0fdf4; color: #15803d; }
     .admin-status-inactive { background: #fef2f2; color: #dc2626; }
     .admin-note { font-size: 11px; color: var(--silver); margin-top: 10px; }
+    .admin-table td.drag-handle {
+      display: table-cell;
+      cursor: grab;
+      color: var(--silver-mid);
+      font-size: 18px;
+      padding: 0 10px 0 8px !important;
+      width: 28px;
+      user-select: none;
+      line-height: 1;
+    }
+    .admin-table td.drag-handle:active { cursor: grabbing; }
+    .admin-table tbody tr.admin-sort-ghost td { background: var(--navy-light); opacity: .6; }
+    .admin-table tbody tr.admin-sort-chosen td { background: #fff8e7; }
 
     /* Hardcoded legacy tiles — hidden; tiles now come from Supabase */
     .app-card-legacy { display: none !important; }
@@ -1243,7 +1256,8 @@
       if (error || !apps) { container.innerHTML = '<div style="color:#c0392b;font-size:13px;">Failed to load apps.</div>'; return; }
 
       const rows = apps.map(a => `
-        <tr class="${a.is_active ? '' : 'admin-row-inactive'}">
+        <tr class="${a.is_active ? '' : 'admin-row-inactive'}" data-app-id="${a.id}">
+          <td class="drag-handle" title="Drag to reorder">⠿</td>
           <td><strong>${escHtml(a.name)}</strong></td>
           <td class="admin-email-cell">${escHtml(a.url)}</td>
           <td><select class="admin-role-select" onchange="updateAppRole('${a.id}',this.value,this)">
@@ -1251,12 +1265,6 @@
               `<option value="${r}"${a.min_role === r ? ' selected' : ''}>${ROLE_LABELS[r]}</option>`
             ).join('')}
           </select></td>
-          <td style="text-align:center">
-            <input type="number" value="${a.sort_order ?? 999}" min="1" max="9999"
-              style="width:62px;padding:4px 6px;border:1px solid var(--silver-light);border-radius:4px;font-size:13px;text-align:center;background:#fff;color:var(--text)"
-              onblur="updateSortOrder('${a.id}',this.value,this)"
-              onkeydown="if(event.key==='Enter')this.blur()" />
-          </td>
           <td><span class="admin-status-badge admin-status-${a.is_active ? 'active':'inactive'}">${a.is_active ? 'Active':'Inactive'}</span></td>
           <td><button class="admin-deact-btn${a.is_active ? '' : ' admin-react-btn'}" onclick="toggleAppActive('${a.id}',${a.is_active},this)">${a.is_active ? 'Disable':'Enable'}</button></td>
         </tr>`).join('');
@@ -1266,7 +1274,7 @@
 
       container.innerHTML = `
         <table class="admin-table">
-          <thead><tr><th>App</th><th>URL</th><th>Min Role</th><th style="text-align:center">Order</th><th>Status</th><th>Actions</th></tr></thead>
+          <thead><tr><th style="width:28px"></th><th>App</th><th>URL</th><th>Min Role</th><th>Status</th><th>Actions</th></tr></thead>
           <tbody>${rows}</tbody>
         </table>
         <div class="admin-form-box">
@@ -1282,23 +1290,37 @@
           <input id="nap-icon" class="admin-form-input" placeholder="Icon key (quotes / install / pmcalc / xml / packetgen / payroll / finance / timesheets / default)" style="margin-bottom:12px" />
           <button class="btn btn-gold" onclick="saveNewApp()" style="margin-top:4px">+ Add App</button>
         </div>
-        <p class="admin-note">${apps.length} app${apps.length!==1?'s':''} total &nbsp;·&nbsp; Role changes apply on next dashboard load</p>`;
+        <p class="admin-note">${apps.length} app${apps.length!==1?'s':''} total &nbsp;·&nbsp; Drag rows to reorder &nbsp;·&nbsp; Role changes apply on next dashboard load</p>`;
+
+      initAppDragSort();
+    }
+
+    function initAppDragSort() {
+      const tbody = document.querySelector('#admin-apps-content .admin-table tbody');
+      if (!tbody || typeof Sortable === 'undefined') return;
+      Sortable.create(tbody, {
+        handle: '.drag-handle',
+        animation: 150,
+        ghostClass: 'admin-sort-ghost',
+        chosenClass: 'admin-sort-chosen',
+        onEnd: saveSortOrders
+      });
+    }
+
+    async function saveSortOrders() {
+      const rows = document.querySelectorAll('#admin-apps-content .admin-table tbody tr[data-app-id]');
+      const updates = Array.from(rows).map((row, i) =>
+        _dashAuthClient.from('dashboard_apps').update({ sort_order: i + 1 }).eq('id', row.dataset.appId)
+      );
+      const results = await Promise.all(updates);
+      const failed = results.filter(r => r.error);
+      if (failed.length) console.error('[MICO] Sort order save failed', failed);
     }
 
     async function updateAppRole(appId, newRole, el) {
       el.disabled = true;
       const { error } = await _dashAuthClient.from('dashboard_apps').update({ min_role: newRole }).eq('id', appId);
       if (error) alert('Failed: ' + error.message);
-      el.disabled = false;
-    }
-
-    async function updateSortOrder(appId, val, el) {
-      const n = parseInt(val, 10);
-      if (isNaN(n) || n < 1) { el.value = el.dataset.prev || 999; return; }
-      el.dataset.prev = n;
-      el.disabled = true;
-      const { error } = await _dashAuthClient.from('dashboard_apps').update({ sort_order: n }).eq('id', appId);
-      if (error) { alert('Failed to save order: ' + error.message); }
       el.disabled = false;
     }
 
