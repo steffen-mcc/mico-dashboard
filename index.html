@@ -614,17 +614,15 @@
     .admin-status-active  { background: #f0fdf4; color: #15803d; }
     .admin-status-inactive { background: #fef2f2; color: #dc2626; }
     .admin-note { font-size: 11px; color: var(--silver); margin-top: 10px; }
-    .admin-table td.drag-handle {
-      display: table-cell;
+    .admin-sort-handle {
       cursor: grab;
       color: var(--silver);
-      font-size: 18px;
       padding: 0 10px 0 8px !important;
       width: 28px;
       user-select: none;
       line-height: 1;
     }
-    .admin-table td.drag-handle:active { cursor: grabbing; }
+    .admin-sort-handle:active { cursor: grabbing; }
     .admin-table tbody tr.admin-sort-ghost td { background: var(--navy-light); opacity: .6; }
     .admin-table tbody tr.admin-sort-chosen td { background: #fff8e7; }
 
@@ -1257,7 +1255,7 @@
 
       const rows = apps.map(a => `
         <tr class="${a.is_active ? '' : 'admin-row-inactive'}" data-app-id="${a.id}">
-          <td class="drag-handle" title="Drag to reorder"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="4" cy="3" r="1.2" fill="currentColor"/><circle cx="10" cy="3" r="1.2" fill="currentColor"/><circle cx="4" cy="7" r="1.2" fill="currentColor"/><circle cx="10" cy="7" r="1.2" fill="currentColor"/><circle cx="4" cy="11" r="1.2" fill="currentColor"/><circle cx="10" cy="11" r="1.2" fill="currentColor"/></svg></td>
+          <td class="admin-sort-handle" title="Drag to reorder"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="4" cy="3" r="1.2" fill="currentColor"/><circle cx="10" cy="3" r="1.2" fill="currentColor"/><circle cx="4" cy="7" r="1.2" fill="currentColor"/><circle cx="10" cy="7" r="1.2" fill="currentColor"/><circle cx="4" cy="11" r="1.2" fill="currentColor"/><circle cx="10" cy="11" r="1.2" fill="currentColor"/></svg></td>
           <td><strong>${escHtml(a.name)}</strong></td>
           <td class="admin-email-cell">${escHtml(a.url)}</td>
           <td><select class="admin-role-select" onchange="updateAppRole('${a.id}',this.value,this)">
@@ -1299,7 +1297,7 @@
       const tbody = document.querySelector('#admin-apps-content .admin-table tbody');
       if (!tbody || typeof Sortable === 'undefined') return;
       Sortable.create(tbody, {
-        handle: '.drag-handle',
+        handle: '.admin-sort-handle',
         animation: 150,
         ghostClass: 'admin-sort-ghost',
         chosenClass: 'admin-sort-chosen',
